@@ -1,7 +1,12 @@
 
 # Google Book Search in the CLI
 
-## This project uses Node.js
+## This project uses
+
+* Node.js
+* request-promise for API call to Google Books
+* inquirer.js for prompts
+* yargs for commands
 
 after downloading, run npm install -g to utilize the book-search command
 
