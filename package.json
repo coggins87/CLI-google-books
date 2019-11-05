@@ -1,0 +1,21 @@
+{
+  "name": "8thlight",
+  "version": "1.0.0",
+  "description": "technical challenge",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "npm run start"
+  },
+  "author": "Colleen Higgins",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "inquirer": "^7.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "yargs": "^14.2.0"
+  },
+  "bin": {
+    "book-search": "./bin/index.js"
+  }
+}
