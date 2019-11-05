@@ -7,9 +7,7 @@ module.exports = {
         name: "search",
         type: "input",
         message: "Search for a book",
-           validate: async function (value){
-        (value.length > 0 && typeof value === string) ? true : console.log('Please enter a search term!')
-      }
+        validate: validateAnswer
       }
     ];
     return inquirer.prompt(question);
@@ -32,5 +30,12 @@ module.exports = {
       ];
       return inquirer.prompt(options);
     }
+  },
+  validateAnswer : async function(value) {
+    (value.length > 0) && (typeof value === string)
+      ? true
+      : console.log("Please enter a search term!");
   }
 };
+
+
