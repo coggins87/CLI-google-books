@@ -6,11 +6,10 @@ module.exports = {
       {
         name: "search",
         type: "input",
-        message: "Search for a book"
-        /*    validate: function (value){
-        consoe.log(value)
-        (value.length && typeof value === string) ? true : 'Please enter a search term!'
-      } */
+        message: "Search for a book",
+           validate: async function (value){
+        (value.length > 0 && typeof value === string) ? true : console.log('Please enter a search term!')
+      }
       }
     ];
     return inquirer.prompt(question);
