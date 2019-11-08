@@ -21,9 +21,9 @@ bookSearch : (query) => {
     .then(list => {
       if(list.totalItems === 0){
         console.log('Could not find any results! Try another search')
-        return;
+        return 'Could not find any results! Try another search';
       }
-      return organizeResults(list.items);
+     else return organizeResults(list.items);
     })
     .catch(err => {
       console.log(err);

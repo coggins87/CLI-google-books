@@ -14,6 +14,7 @@ module.exports = {
   },
   createList: answers => {
     if (!answers) "You need to search for books first";
+    else if (typeof answers == 'string') return;
     else {
       let choice = [];
       if (answers) {
@@ -32,7 +33,7 @@ module.exports = {
     }
   },
   validateAnswer : async (value) => {
-    (value.length > 0) && (typeof value == string)
+    (value.length > 0) && (typeof value == 'string')
       ? true
       : console.log("Please enter a search term!");
   }
