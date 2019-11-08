@@ -16,15 +16,19 @@ const start = async () => {
         });
       } else {
         fs.writeFile("./saved-books.txt", bookToSave.results, err => {
-          if (err) throw err;
+          if (err) throw new Error(err);
           console.log(
             `The ${bookToSave.results} was added to your new book list file!`
-          );
-        });
-       
+          )
+
+        })
       }
+
     }
-  } else console.log("Enter a search term to see a list of books");
+  } else console.log("Enter a search term to see a list of books")
+
+  .catch(err=> console.log(err))
+
 };
 
 module.exports = start
