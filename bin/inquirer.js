@@ -19,6 +19,7 @@ module.exports = {
       let choice = [];
       if (answers) {
         answers.forEach(answer => choice.push(answer));
+        choice.push('CANCEL/DO NOT SAVE A BOOK')
       }
 
       const options = [
@@ -33,6 +34,8 @@ module.exports = {
     }
   },
   validateAnswer : async (value) => {
+    console.log(inquirer.ui.activePrompt)
+
     (value.length > 0) && (typeof value == 'string')
       ? true
       : console.log("Please enter a search term!");

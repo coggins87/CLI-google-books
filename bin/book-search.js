@@ -26,7 +26,7 @@ bookSearch : (query) => {
      else return organizeResults(list.items);
     })
     .catch(err => {
-      console.log(err);
+      console.log('There was an error searching for books, try again later!');
     });
 },
 
