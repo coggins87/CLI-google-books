@@ -1,7 +1,6 @@
 const rp = require("request-promise");
 
 module.exports = {
-
   bookSearch: (options) => {
     if (!options.qs.q) return "Search term is required!";
     console.log('searching...')
@@ -21,7 +20,7 @@ module.exports = {
   }
 };
 
-function organizeResults(listOfBooks) {
+organizeResults = (listOfBooks) => {
   let output = listOfBooks.map(book => {
     return `${book.volumeInfo.title} by ${
       book.volumeInfo.authors === undefined
