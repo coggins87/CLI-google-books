@@ -1,13 +1,15 @@
 const fs = require("fs");
 const search = require("./book-search");
 const inquirer = require("./inquirer");
+const config = require('./config')
 
 const start = async () => {
   try {
+    let options = config.OPTIONS
     let searchTerm = await inquirer.getSearch();
     if (searchTerm.search) {
-      let answers = await search.bookSearch(searchTerm.search);
-
+      options.qs.q = searchTerm.search
+      let answers = await search.bookSearch(options);
       let bookToSave = await inquirer.createList(answers);
       if(!bookToSave) return;
       if (bookToSave.results !== "CANCEL/DO NOT SAVE A BOOK") {
