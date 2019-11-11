@@ -15,12 +15,13 @@ module.exports = {
         } else return organizeResults(list.items);
       })
       .catch(err => {
-        console.log(err, "There was an error searching for books, try again later!");
+        console.log("There was an error searching for books, try again later!");
+        return "There was an error searching for books, try again later!"
       });
   }
 };
 
-organizeResults = (listOfBooks) => {
+function organizeResults(listOfBooks) {
   let output = listOfBooks.map(book => {
     return `${book.volumeInfo.title} by ${
       book.volumeInfo.authors === undefined

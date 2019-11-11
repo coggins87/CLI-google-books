@@ -2,6 +2,7 @@ const fs = require("fs");
 const search = require("./book-search");
 const inquirer = require("./inquirer");
 const config = require('./config')
+const manageBookListSave = require('./book-save')
 
 const start = async () => {
   try {
@@ -13,7 +14,7 @@ const start = async () => {
       let bookToSave = await inquirer.createList(answers);
       if(!bookToSave) return;
       if (bookToSave.results !== "CANCEL/DO NOT SAVE A BOOK") {
-        manageBookList(bookToSave);
+        manageBookListSave(bookToSave);
       } else console.log("You chose to not save a book, search again!");
     } else console.log("Enter a search term to see a list of books");
   } catch (error) {
@@ -21,20 +22,6 @@ const start = async () => {
   }
 };
 
-const manageBookList = bookToSave => {
-  if (fs.existsSync("./saved-books.txt")) {
-    fs.appendFile("./saved-books.txt", bookToSave.results + "\n", err => {
-      if (err) throw err;
-      console.log(`The ${bookToSave.results} was added to your book list!`);
-    });
-  } else {
-    fs.writeFile("./saved-books.txt", bookToSave.results, err => {
-      if (err) throw new Error(err);
-      console.log(
-        `The ${bookToSave.results} was added to your new book list file!`
-      );
-    });
-  }
-};
+
 
 module.exports = start;
