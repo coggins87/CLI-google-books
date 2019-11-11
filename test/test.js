@@ -74,7 +74,7 @@ describe("Inquirer", function() {
 describe("Save book", function() {
   it("when book string is given, successfully saves book to txt", () => {
     let mockBook = {results: "save this string"};
-    let response = manageBookListSave(mockBook, './test/test-list.txt');
+   manageBookListSave(mockBook, './test/test-list.txt');
   fs.readFile('./test/test-list.txt', (err, data)=>{
     if(err) return err;
       expect(data.includes(mockBook.results))
