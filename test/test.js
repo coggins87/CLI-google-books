@@ -6,8 +6,8 @@ const inquirer = require("inquirer");
 const inquirerGen = require("../bin/inquirer");
 const stdin = require("mock-stdin").stdin()
 const config = require("../bin/config");
-const manageBookListSave = require("../bin/start-cli");
-const fs = require("fs");
+const manageBookListSave = require("../bin/book-save");
+const fs = require('fs')
 
 describe("Book Search", function() {
   let options = config.OPTIONS;
@@ -72,11 +72,13 @@ describe("Inquirer", function() {
 });
 
 describe("Save book", function() {
-  it("when book string is given, successfully saves book to txt", async () => {
-    let mockBook = "save this string";
-    let response = await manageBookListSave(mockBook);
-    console.log(response);
-    expect(response).to.be.a("string");
-    expect(response).to.eql(`${mockBook} was added to your book list!`);
+  it("when book string is given, successfully saves book to txt", () => {
+    let mockBook = {results: "save this string"};
+    let response = manageBookListSave(mockBook, './test/test-list.txt');
+  fs.readFile('./test/test-list.txt', (err, data)=>{
+    if(err) return err;
+      expect(data.includes(mockBook.results))
+    }
+   )
   });
 });
