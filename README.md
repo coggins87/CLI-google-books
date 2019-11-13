@@ -1,12 +1,12 @@
 
 # Google Book Search in the CLI
 
-Not familiar with what 'CLI' is? Check out [this link]("https://www.vikingcodeschool.com/web-development-basics/a-command-line-crash-course") for some info about what the command line interface (CLI) is, and how to use it.
+Not familiar with what 'CLI' is? Check out [this link](https://www.vikingcodeschool.com/web-development-basics/a-command-line-crash-course) for some info about what the command line interface (CLI) is, and how to use it.
 
 ## This project uses
 
 * Node.js
-  *You will need Node.js installed to run this app! Visit [the official Node.js site to learn more and install]("https://nodejs.org/en/")
+  *You will need Node.js installed to run this app! Visit [the official Node.js site to learn more and install](https://nodejs.org/en/)
 * request-promise for API call to Google Books
 * inquirer.js for prompts
 * yargs for commands
@@ -32,3 +32,7 @@ Type `book-search view` into your command line and hit `enter`.
 ### To view commands
 
 Type `book-search help` into your command line and hit `enter`
+
+### To run tests
+
+This program uses Mocha for testing. Run `npm test` to run the tests.
