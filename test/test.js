@@ -4,12 +4,12 @@ const app = require("../bin/book-search");
 const search = require("../bin/book-search.js");
 const inquirer = require("inquirer");
 const inquirerGen = require("../bin/inquirer");
-const stdin = require("mock-stdin").stdin()
+const stdin = require("mock-stdin").stdin();
 const config = require("../bin/config");
 const manageBookListSave = require("../bin/book-save");
-const fs = require('fs')
+const fs = require("fs");
 
-describe("Book Search", function() {
+describe("BOOK SEARCH", function() {
   let options = config.OPTIONS;
   beforeEach(() => {
     options = config.OPTIONS;
@@ -42,7 +42,7 @@ describe("Book Search", function() {
   });
   it("responds with an error if fetch error", async () => {
     options = {
-      uri: `https://www.badURI.com/books/v1/volumes`,
+      uri: `https://www.google.com/books/v1/volumes`,
       qs: {
         key: "AIzaSyC7etpGfup0-A3HssAIzYe_mlljnOo4iPE",
         maxResults: 5,
@@ -58,27 +58,35 @@ describe("Book Search", function() {
   });
 });
 
-describe("Inquirer", function() {
+describe("INQUIRER", function() {
   let backup;
   it("prompts with search when user enters search command", async () => {
-    let mockInquirer = inquirer.prompt([{name: 'test', message: 'Search for a book'}])
+    let mockInquirer = inquirer.prompt([
+      { name: "test", message: "Search for a book" }
+    ]);
     let question = mockInquirer.ui.activePrompt.opt.message;
     expect(question).to.be.a("string");
-    expect(question).to.eql("Search for a book")
+    expect(question).to.eql("Search for a book");
   });
   afterEach(() => {
     mockInquirer = backup;
   });
 });
 
-describe("Save book", function() {
+describe("SAVE BOOK", function() {
   it("when book string is given, successfully saves book to txt", () => {
-    let mockBook = {results: "save this string"};
-   manageBookListSave(mockBook, './test/test-list.txt');
-  fs.readFile('./test/test-list.txt', (err, data)=>{
-    if(err) return err;
-      expect(data.includes(mockBook.results))
-    }
-   )
+    let mockBook = { results: "save this string" };
+    manageBookListSave(mockBook, "./test/test-list.txt");
+    fs.readFile("./test/test-list.txt", (err, data) => {
+      if (err) return err;
+      expect(data.includes(mockBook.results));
+    });
+  });
+  it("if given incorrect data, does not save data to list", () => {
+    let mockBook = "incorrect";
+    manageBookListSave(mockBook, "./test/test-list.txt");
+    fs.readFile("./test/test-list.txt", (err, data) => {
+      expect(data.includes(!mockBook));
+    });
   });
 });

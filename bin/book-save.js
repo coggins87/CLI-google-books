@@ -2,6 +2,10 @@ const fs = require("fs");
 
 const manageBookListSave = async (bookToSave, filePath) => {
   let statement;
+  if(!bookToSave.results) {
+    console.log('Incorrect format to save book')
+    return;
+  }
   try {
     if (fs.existsSync(filePath)) {
      fs.appendFile(filePath, bookToSave.results + "\n", err => {
